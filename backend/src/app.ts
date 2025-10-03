@@ -2,8 +2,6 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes";
 import emailRoutes from "./routes/emailRoutes";
-import swaggerUi from "swagger-ui-express";
-import swaggerDocument from "./swagger";
 
 const app = express();
 app.use(cors());
@@ -14,9 +12,60 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Database test endpoint
+app.get("/api/test-db", async (req, res) => {
+  try {
+    const { db } = await import("./db");
+    const [rows] = await db.execute("SELECT 1 as test");
+    res.json({ 
+      status: "success", 
+      message: "Database connected successfully",
+      test: rows,
+      env: {
+        DB_HOST: process.env.DB_HOST,
+        DB_PORT: process.env.DB_PORT,
+        DB_USER: process.env.DB_USER,
+        DB_NAME: process.env.DB_NAME,
+        hasPassword: !!process.env.DB_PASSWORD
+      }
+    });
+  } catch (error: any) {
+    res.status(500).json({ 
+      status: "error", 
+      message: "Database connection failed",
+      error: error.message,
+      env: {
+        DB_HOST: process.env.DB_HOST,
+        DB_PORT: process.env.DB_PORT,
+        DB_USER: process.env.DB_USER,
+        DB_NAME: process.env.DB_NAME,
+        hasPassword: !!process.env.DB_PASSWORD
+      }
+    });
+  }
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/email", emailRoutes);
-app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Simple API documentation endpoint (without Swagger UI for now)
+app.get("/api/docs", (req, res) => {
+  res.json({
+    message: "EmailHub API Documentation",
+    endpoints: {
+      auth: {
+        "POST /api/auth/register": "Register new user",
+        "POST /api/auth/login": "Login user"
+      },
+      email: {
+        "GET /api/email": "Get user emails",
+        "POST /api/email/send": "Send email",
+        "POST /api/email/score": "Check spam score",
+        "POST /api/email/refine": "Refine email with AI"
+      }
+    }
+  });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
