@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dependencies
 node_modules/
 npm-debug.log*
@@ -10,11 +11,30 @@ backend/dist/
 
 # Environment variables
 .env
+=======
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend/node_modules
+backend/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+>>>>>>> c9eb7ec66831cced20582ffd4047b11e610b1d8c
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+<<<<<<< HEAD
 # IDE and editor files
 .vscode/
 .idea/
@@ -102,3 +122,8 @@ jspm_packages/
 # Temporary folders
 tmp/
 temp/
+=======
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+>>>>>>> c9eb7ec66831cced20582ffd4047b11e610b1d8c

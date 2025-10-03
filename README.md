@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EmailHub - Modern Email Application
 
 A beautiful, modern email application built with React, TypeScript, and Node.js. Features include email composition, spam scoring, GPT-powered email refinement, and a clean, responsive UI.
@@ -230,3 +231,7 @@ If you encounter any issues:
 - OpenAI for GPT integration
 - Ethereal for email testing
 - Vercel and Railway for hosting
+=======
+# not_so_outbox.ai
+A project aimed at implementing, deploying code and more in a time crunch
+>>>>>>> c9eb7ec66831cced20582ffd4047b11e610b1d8c
