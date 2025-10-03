@@ -7,7 +7,6 @@ import {
   CardContent, 
   Typography,
   IconButton,
-  Divider,
   Stack,
   InputAdornment,
   Alert,
@@ -17,9 +16,6 @@ import {
 } from "@mui/material";
 import { 
   Send, 
-  AttachFile, 
-  FormatBold, 
-  FormatItalic, 
   Close,
   PersonAdd,
   Email as EmailIcon,
