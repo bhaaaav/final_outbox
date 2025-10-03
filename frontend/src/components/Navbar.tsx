@@ -2,14 +2,12 @@ import {
   AppBar, 
   Toolbar, 
   Typography, 
-  Button, 
   Box, 
   Avatar, 
   IconButton, 
   Menu, 
   MenuItem,
   Chip,
-  Badge,
   Stack,
   Divider
 } from "@mui/material";
@@ -18,18 +16,10 @@ import {
   Logout, 
   Settings, 
   AccountCircle,
-  NotificationsNone,
-  Search,
   Brightness4,
   Help
 } from "@mui/icons-material";
-import { useState, createContext, useContext } from "react";
-
-// Create a simple dark mode context for this component
-const DarkModeContext = createContext({ 
-  darkMode: false, 
-  toggleDarkMode: () => {} 
-});
+import { useState } from "react";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

@@ -38,7 +38,7 @@ export default function EmailTable({ emails, onChanged }: EmailTableProps) {
   const [selectedEmails, setSelectedEmails] = useState<Set<number>>(new Set());
   const [starredEmails, setStarredEmails] = useState<Set<number>>(new Set());
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedEmailId, setSelectedEmailId] = useState<number | null>(null);
+  const [selectedEmailId] = useState<number | null>(null);
 
   const handleSelectAll = () => {
     if (selectedEmails.size === emails.length) {

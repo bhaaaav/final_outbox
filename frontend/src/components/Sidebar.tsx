@@ -5,26 +5,13 @@ import {
   ListItemText, 
   ListItemIcon,
   Typography,
-  Divider,
   Chip,
-  Button,
-  Stack,
-  Paper,
-  LinearProgress
+  Button
 } from "@mui/material";
 import { 
   Inbox, 
   Send, 
-  Drafts, 
-  Delete, 
-  Star, 
-  Label,
-  Add,
-  Folder,
-  BarChart,
-  Settings,
-  Archive,
-  Report
+  Add
 } from "@mui/icons-material";
 import { useState } from "react";
 
@@ -48,7 +35,6 @@ export default function Sidebar({ onSelectFolder, onCompose }: SidebarProps) {
     { id: "inbox", name: "Inbox", icon: <Inbox /> },
     { id: "sent", name: "Sent", icon: <Send /> },
   ];
-  const labels: FolderItem[] = [];
 
   const handleFolderClick = (folderId: string) => {
     setSelectedFolder(folderId);

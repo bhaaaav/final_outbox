@@ -10,7 +10,6 @@ import {
   Paper,
   Stack,
   Chip,
-  IconButton,
   Breadcrumbs,
   Link as MuiLink
 } from "@mui/material";
@@ -34,7 +33,7 @@ interface DashboardStats {
 export default function Dashboard() {
   const [emails, setEmails] = useState<Email[]>([]);
   const [folder, setFolder] = useState("inbox");
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showCompose, setShowCompose] = useState(false);
   const [stats, setStats] = useState<DashboardStats>({
