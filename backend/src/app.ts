@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Add request logging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  next();
+});
+
 // Root endpoint
 app.get("/", (req, res) => {
   res.json({ 
@@ -18,6 +24,7 @@ app.get("/", (req, res) => {
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
+  console.log("Health check requested");
   res.status(200).json({ 
     status: "ok", 
     timestamp: new Date().toISOString(),
