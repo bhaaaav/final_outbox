@@ -81,8 +81,19 @@ app.get("/api/docs", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+console.log(`Starting server on port ${PORT}`);
+console.log(`Environment variables:`, {
+  NODE_ENV: process.env.NODE_ENV,
+  PORT: process.env.PORT,
+  DB_HOST: process.env.DB_HOST ? 'SET' : 'NOT SET',
+  DB_PORT: process.env.DB_PORT ? 'SET' : 'NOT SET',
+  DB_USER: process.env.DB_USER ? 'SET' : 'NOT SET',
+  DB_NAME: process.env.DB_NAME ? 'SET' : 'NOT SET',
+  JWT_SECRET: process.env.JWT_SECRET ? 'SET' : 'NOT SET'
+});
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
   console.log(`Health check available at: http://localhost:${PORT}/api/health`);
 });
 
