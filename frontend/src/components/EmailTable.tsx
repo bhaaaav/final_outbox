@@ -38,7 +38,13 @@ export default function EmailTable({ emails, onChanged }: EmailTableProps) {
   const [selectedEmails, setSelectedEmails] = useState<Set<number>>(new Set());
   const [starredEmails, setStarredEmails] = useState<Set<number>>(new Set());
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+<<<<<<< HEAD
   const [selectedEmailId, setSelectedEmailId] = useState<number | null>(null); // Fixed TypeScript error
+=======
+  const [selectedEmailId, setSelectedEmailId] = useState<number | null>(null);
+  //const [selectedEmailId, setSelectedEmailId] = useState<number | null>(null);
+  console.log(selectedEmailId); // This will make it "used"
+>>>>>>> e7d287fecaa99ba1edd984bb2fac94906e628edc
 
   const handleSelectAll = () => {
     if (selectedEmails.size === emails.length) {
