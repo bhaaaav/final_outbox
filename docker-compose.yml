@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: email_app
+    ports:
+      - "3306:3306"
+  backend:
+    build: ./backend
+    command: npx ts-node src/app.ts
+    volumes:
+      - ./backend:/app
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: email_app
+      JWT_SECRET: supersecret
+      SMTP_HOST: smtp.ethereal.email
+      SMTP_USER: YOUR_ETHEREAL_USER
+      SMTP_PASS: YOUR_ETHEREAL_PASS
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
